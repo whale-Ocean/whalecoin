@@ -291,36 +291,6 @@ void BIP32Hash(const ChainCode &chainCode, unsigned int nChild, unsigned char he
 
 
 template<typename T1>
-inline uint256 heavyhashv2(const T1 pbegin, const T1 pend)
-{
-    sph_blake512_context     ctx_blake;
-    sph_whirlpool_context    ctx_whirlpool;
-    sph_sha256_context       ctx_sha256;
-
-    static unsigned char pblank[1];
-
-    uint512 hash[4];
-
-    sph_blake512_init(&ctx_blake);
-    sph_blake512(&ctx_blake, (pbegin == pend ? pblank : static_cast<const void*>(&pbegin[0])), (pend - pbegin) * sizeof(pbegin[0]));
-    sph_blake512_close(&ctx_blake, static_cast<void*>(&hash[0]));
-
-    sph_whirlpool_init(&ctx_whirlpool);
-    sph_whirlpool(&ctx_whirlpool, static_cast<const void*>(&hash[0]), 64);
-    sph_whirlpool_close(&ctx_whirlpool, static_cast<void*>(&hash[1]));
-
-    sph_sha256_init(&ctx_sha256);
-    sph_sha256(&ctx_sha256, static_cast<const void*>(&hash[1]), 64);
-    sph_sha256_close(&ctx_sha256, static_cast<void*>(&hash[2]));
-
-    sph_sha256_init(&ctx_sha256);
-    sph_sha256(&ctx_sha256, static_cast<const void*>(&hash[2]), 64);
-    sph_sha256_close(&ctx_sha256, static_cast<void*>(&hash[3]));
-
-    return hash[3].trim256();
-}
-
-template<typename T1>
 inline uint256 whale_hash(const T1 pbegin, const T1 pend)
 {
     unsigned char hash[128] = { 0 };
