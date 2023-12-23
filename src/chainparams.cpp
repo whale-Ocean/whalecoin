@@ -160,8 +160,9 @@ public:
         assert(genesis.hashMerkleRoot == uint256S("c4a47847658174dff39f23e69c2246e7e611752884ceb600694a8619adbbfef5"));
 
         vSeeds = {};
-        vSeeds.emplace_back("154.91.34.96");
-        vSeeds.emplace_back("154.91.32.151");
+        vSeeds.emplace_back("dnsseed.whalecoin.top");
+//        vSeeds.emplace_back("154.91.34.96");
+//        vSeeds.emplace_back("154.91.32.151");
 
         vFixedSeeds = std::vector<SeedSpec6> {pnSeed6_main, pnSeed6_main + ARRAYLEN(pnSeed6_main)};
 
