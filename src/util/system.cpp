@@ -561,7 +561,7 @@ fs::path GetDefaultDataDir()
     // Unix: ~/.whalecoin
 #ifdef WIN32
     // Windows
-    return GetSpecialFolderPath(CSIDL_APPDATA);
+    return GetSpecialFolderPath(CSIDL_APPDATA) / "whalecoin";
 #else
     fs::path pathRet;
     char* pszHome = getenv("HOME");

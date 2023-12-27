@@ -161,8 +161,10 @@ public:
 
         vSeeds = {};
         vSeeds.emplace_back("dnsseed.whalecoin.top");
-//        vSeeds.emplace_back("154.91.34.96");
-//        vSeeds.emplace_back("154.91.32.151");
+        vSeeds.emplace_back("154.91.34.96");
+        vSeeds.emplace_back("154.91.32.151");
+        vSeeds.emplace_back("156.253.9.127");
+        vSeeds.emplace_back("154.91.33.41");
 
         vFixedSeeds = std::vector<SeedSpec6> {pnSeed6_main, pnSeed6_main + ARRAYLEN(pnSeed6_main)};
 
